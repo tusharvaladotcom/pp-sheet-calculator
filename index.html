@@ -159,6 +159,31 @@ button {
     font-size: 20px;
   }
 }
+    .row {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+.row.two-col input {
+  width: 50%;
+}
+
+.row.three-col input {
+  width: 33.33%;
+}
+
+/* Extra small mobile safety */
+@media (max-width: 360px) {
+  .row {
+    flex-wrap: wrap;
+  }
+
+  .row.two-col input,
+  .row.three-col input {
+    width: 100%;
+  }
+}
 
   </style>
 </head>
@@ -171,37 +196,39 @@ button {
   <!-- CENTIMETER -->
   <div class="section">
     <div class="section-title">Centimeter (CM)</div>
-    <div class="row two">
-      <input id="lengthCm" placeholder="Length (CM)">
-      <input id="widthCm" placeholder="Width (CM)">
+    <div class="row two-col">
+  <input id="cmLength" type="number" placeholder="Length (CM)">
+  <input id="cmWidth" type="number" placeholder="Width (CM)">
+</div>
     </div>
   </div>
 
   <!-- INCH -->
   <div class="section">
     <div class="section-title">Inch</div>
-    <div class="row two">
-      <input id="lengthInch" placeholder="Length (Inch)">
-      <input id="widthInch" placeholder="Width (Inch)">
-    </div>
+  <div class="row two-col">
+  <input id="inchLength" type="number" placeholder="Length (Inch)">
+  <input id="inchWidth" type="number" placeholder="Width (Inch)">
+</div>
   </div>
 
   <!-- METER -->
   <div class="section">
     <div class="section-title">Meter (Primary)</div>
-    <div class="row two">
-      <input id="lengthMeter" placeholder="Length (Meter)">
-      <input id="widthMeter" placeholder="Width (Meter)">
-    </div>
+    <div class="row two-col">
+  <input id="mLength" type="number" placeholder="Length (Meter)">
+  <input id="mWidth" type="number" placeholder="Width (Meter)">
+</div>
   </div>
 
   <!-- MATERIAL & PRICE -->
   <div class="section">
     <div class="section-title">Material & Price</div>
-    <div class="row three">
-      <input id="gsm" placeholder="GSM">
-      <input id="purchaseKg" placeholder="Purchase ₹ / KG">
-      <input id="salesKg" placeholder="Sales ₹ / KG">
+  <div class="row three-col">
+  <input id="gsm" type="number" placeholder="GSM">
+  <input id="purchasePrice" type="number" placeholder="Purchase ₹ / KG">
+  <input id="salesPrice" type="number" placeholder="Sales ₹ / KG">
+</div>
     </div>
   </div>
 
@@ -287,4 +314,5 @@ function calculate(){
 
 </body>
 </html>
+
 
