@@ -1,318 +1,253 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  
-  <title>PP Sheet Price Quotation</title>
+<meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  
-  <style>
-    /* =====================
-   GLOBAL (Mobile First)
-===================== */
-* {
-  box-sizing: border-box;
+<title>PP Sheet Price Quotation</title>
+
+<style>
+*{box-sizing:border-box;font-family:Arial,sans-serif}
+body{background:#eef2f5;margin:0;padding:12px}
+.container{max-width:420px;margin:auto;background:#fff;padding:16px;border-radius:12px;box-shadow:0 6px 18px rgba(0,0,0,.08)}
+h2{text-align:center;margin-bottom:16px}
+.section{margin-bottom:14px}
+.section-title{font-weight:bold;margin-bottom:6px}
+
+.row{display:flex;gap:10px}
+.row.two input{width:50%}
+.row.three input{width:33.33%}
+
+input{
+  width:100%;
+  padding:10px;
+  border-radius:6px;
+  border:1px solid #ccc;
+  font-size:15px;
 }
 
-body {
-  margin: 0;
-  padding: 0;
-  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
-  background: #eef2f3;
-  font-size: 16px;
-  line-height: 1.4;
+button{
+  width:100%;
+  padding:12px;
+  background:linear-gradient(90deg,#27b6ff,#00d4ff);
+  border:none;
+  color:#fff;
+  font-size:16px;
+  border-radius:8px;
+  cursor:pointer;
 }
 
-/* =====================
-   MAIN CONTAINER
-===================== */
-.container {
-  width: 100%;
-  max-width: 420px;          /* desktop limit */
-  margin: 12px auto;
-  background: #ffffff;
-  border-radius: 12px;
-  padding: 16px;
-  box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+table{
+  width:100%;
+  border-collapse:collapse;
+  margin-top:10px;
 }
 
-/* =====================
-   HEADINGS
-===================== */
-h1, h2 {
-  text-align: center;
-  font-size: 18px;
-  margin-bottom: 12px;
-  font-weight: 600;
+th,td{
+  border:1px solid #000;
+  padding:8px;
+  text-align:center;
+  font-size:15px;
 }
 
-/* =====================
-   SECTIONS
-===================== */
-.section {
-  margin-bottom: 14px;
+.purchase{color:#d35400;font-weight:bold}
+.sales{color:#1e8449;font-weight:bold}
+
+.summary{
+  display:flex;
+  gap:10px;
+  margin-top:12px;
 }
 
-.section-title {
-  font-size: 15px;
-  font-weight: 600;
-  margin-bottom: 6px;
+.box{
+  width:50%;
+  background:#f2f7ff;
+  padding:12px;
+  text-align:center;
+  border-radius:8px;
+  font-weight:bold;
 }
 
-/* =====================
-   FORM ROWS
-===================== */
-.row {
-  display: flex;
-  flex-direction: column;   /* mobile first */
-  gap: 8px;
-  margin-bottom: 10px;
+.box span{
+  display:block;
+  margin-top:6px;
+  font-size:16px;
 }
 
-/* =====================
-   INPUTS
-===================== */
-input {
-  width: 100%;
-  padding: 10px 12px;
-  font-size: 16px;           /* IMPORTANT: prevents mobile zoom */
-  border-radius: 6px;
-  border: 1px solid #ccc;
+.profit{
+  background:#eafaf1;
+  color:#1e8449;
 }
 
-/* =====================
-   BUTTON
-===================== */
-button {
-  width: 100%;
-  padding: 12px;
-  font-size: 16px;
-  font-weight: 600;
-  border: none;
-  border-radius: 8px;
-  background: linear-gradient(90deg, #32b5ff, #00e1d3);
-  color: #fff;
-  cursor: pointer;
+/* Active input highlight */
+input:focus {
+  border-color: #27b6ff;
+  box-shadow: 0 0 6px rgba(39,182,255,0.6);
+  outline: none;
 }
 
-/* =====================
-   RESULT AREA
-===================== */
-.result-box {
-  margin-top: 14px;
-  padding: 12px;
-  background: #f2f7ff;
-  border-radius: 8px;
-  font-size: 15px;
-  font-weight: 500;
-}
-
-/* =====================
-   RESULT TABLE
-===================== */
-.result-table {
-  width: 100%;
-  border-collapse: collapse;
-  margin-top: 10px;
-  font-size: 14px;
-}
-
-.result-table th,
-.result-table td {
-  border: 1px solid #000;
-  padding: 8px 6px;
-  text-align: center;
-}
-
-.result-table th {
-  background: #fafafa;
-  font-weight: 600;
-}
-
-.purchase-col {
-  color: #d35400;
-  font-weight: 600;
-}
-
-.sales-col {
-  color: #27ae60;
-  font-weight: 600;
-}
-
-/* =====================
-   DESKTOP ENHANCEMENT
-===================== */
-@media (min-width: 700px) {
-
-  .container {
-    max-width: 520px;
-  }
-
-  .row {
-    flex-direction: row;    /* side by side on desktop */
-  }
-
-  .row input {
-    flex: 1;
-  }
-
-  h1 {
-    font-size: 20px;
-  }
-}
-    .row {
-  display: flex;
-  gap: 10px;
-  margin-bottom: 10px;
-}
-
-.row.two-col input {
-  width: 50%;
-}
-
-.row.three-col input {
-  width: 33.33%;
-}
-
-/* Extra small mobile safety */
-@media (max-width: 360px) {
-  .row {
-    flex-wrap: wrap;
-  }
-
-  .row.two-col input,
-  .row.three-col input {
-    width: 100%;
-  }
-}
-
-  </style>
+</style>
 </head>
 
 <body>
-
 <div class="container">
-  <h3>PP Sheet Price Quotation</h3>
 
-  <!-- CENTIMETER -->
-  <div class="section">
-    <div class="section-title">Centimeter (CM)</div>
-    <div class="row two-col">
-  <input id="cmLength" type="number" placeholder="Length (CM)">
-  <input id="cmWidth" type="number" placeholder="Width (CM)">
-</div>
-    </div>
+<h2>PP Sheet Price Quotation</h2>
+
+<!-- CM -->
+<div class="section">
+  <div class="section-title">Centimeter (CM)</div>
+  <div class="row two">
+    <input id="lengthCm" placeholder="Length (CM)" oninput="cmToMeter()">
+    <input id="widthCm" placeholder="Width (CM)" oninput="cmToMeter()">
   </div>
-
-  <!-- INCH -->
-  <div class="section">
-    <div class="section-title">Inch</div>
-  <div class="row two-col">
-  <input id="inchLength" type="number" placeholder="Length (Inch)">
-  <input id="inchWidth" type="number" placeholder="Width (Inch)">
 </div>
-  </div>
 
-  <!-- METER -->
-  <div class="section">
-    <div class="section-title">Meter (Primary)</div>
-    <div class="row two-col">
-  <input id="mLength" type="number" placeholder="Length (Meter)">
-  <input id="mWidth" type="number" placeholder="Width (Meter)">
+<!-- INCH -->
+<div class="section">
+  <div class="section-title">Inch</div>
+  <div class="row two">
+    <input id="lengthIn" placeholder="Length (Inch)" oninput="inchToMeter()">
+    <input id="widthIn" placeholder="Width (Inch)" oninput="inchToMeter()">
+  </div>
 </div>
-  </div>
 
-  <!-- MATERIAL & PRICE -->
-  <div class="section">
-    <div class="section-title">Material & Price</div>
-  <div class="row three-col">
-  <input id="gsm" type="number" placeholder="GSM">
-  <input id="purchasePrice" type="number" placeholder="Purchase ₹ / KG">
-  <input id="salesPrice" type="number" placeholder="Sales ₹ / KG">
+<!-- METER -->
+<div class="section">
+  <div class="section-title">Meter (Primary)</div>
+  <div class="row two">
+    <input id="lengthM" placeholder="Length (Meter)">
+    <input id="widthM" placeholder="Width (Meter)">
+  </div>
 </div>
-    </div>
+
+<!-- MATERIAL & PRICE -->
+<div class="section">
+  <div class="section-title">Material & Price</div>
+  <div class="row three">
+    <input id="gsm" placeholder="GSM">
+    <input id="purchasePrice" placeholder="Purchase ₹ / KG">
+    <input id="salesPrice" placeholder="Sales ₹ / KG">
   </div>
+</div>
 
-  <button onclick="calculate()">Calculate</button>
+<button onclick="calculate()">Calculate</button>
 
-  <!-- RESULT -->
-  <div class="section">
-    <div class="section-title">Result</div>
-
-    <div class="weight-box">
-      Weight of Sheet : <span id="weight">0.0000</span>
-    </div>
-<table class="result-table">
-  <tr>
-    <th>Details</th>
-    <th>Purchase</th>
-    <th>Sales</th>
-  </tr>
-
-  <tr>
-    <td>Taxable</td>
-    <td id="pTax" class="purchase-col">0.0000</td>
-    <td id="sTax" class="sales-col">0.0000</td>
-  </tr>
-
-  <tr>
-    <td>GST (18%)</td>
-    <td id="pGst" class="purchase-col">0.0000</td>
-    <td id="sGst" class="sales-col">0.0000</td>
-  </tr>
-
-  <tr>
-    <td>Final Amount</td>
-    <td id="pFinal" class="purchase-col">0.0000</td>
-    <td id="sFinal" class="sales-col">0.0000</td>
-  </tr>
+<!-- RESULT TABLE -->
+<table>
+<tr>
+  <th>Details</th>
+  <th>Purchase</th>
+  <th>Sales</th>
+</tr>
+<tr>
+  <td>Taxable</td>
+  <td id="pTax" class="purchase">0.000</td>
+  <td id="sTax" class="sales">0.000</td>
+</tr>
+<tr>
+  <td>GST (18%)</td>
+  <td id="pGst" class="purchase">0.000</td>
+  <td id="sGst" class="sales">0.000</td>
+</tr>
+<tr>
+  <td>Final Amount</td>
+  <td id="pFinal" class="purchase">0.000</td>
+  <td id="sFinal" class="sales">0.000</td>
+</tr>
 </table>
+
+<!-- WEIGHT & PROFIT -->
+<div class="summary">
+  <div class="box">
+    Sheet Weight<br>
+    <span id="weight">0.000</span>
+  </div>
+  <div class="box profit">
+    Profit ₹<br>
+    <span id="profit">0.000</span>
   </div>
 </div>
 
-
+</div>
 
 <script>
-/* -------- ELEMENTS -------- */
-const lengthMeter=document.getElementById("lengthMeter");
-const widthMeter=document.getElementById("widthMeter");
-const lengthInch=document.getElementById("lengthInch");
-const widthInch=document.getElementById("widthInch");
-const lengthCm=document.getElementById("lengthCm");
-const widthCm=document.getElementById("widthCm");
-
-/* -------- CONVERSION (UNCHANGED) -------- */
-function inchToMeter(v){return (v*25.4)/1000;}
-function cmToMeter(v){return (v*10)/1000;}
-
-lengthCm.oninput=()=>lengthMeter.value=cmToMeter(Number(lengthCm.value||0)).toFixed(4);
-widthCm.oninput=()=>widthMeter.value=cmToMeter(Number(widthCm.value||0)).toFixed(4);
-lengthInch.oninput=()=>lengthMeter.value=inchToMeter(Number(lengthInch.value||0)).toFixed(4);
-widthInch.oninput=()=>widthMeter.value=inchToMeter(Number(widthInch.value||0)).toFixed(4);
-
-/* -------- FORMULA (UNCHANGED) -------- */
-function num(id){
-  const v=document.getElementById(id).value;
-  return v===""?0:Number(v);
+function cmToMeter(){
+  lengthM.value = (lengthCm.value / 100).toFixed(3)
+  widthM.value  = (widthCm.value / 100).toFixed(3)
 }
+
+function inchToMeter(){
+  lengthM.value = (lengthIn.value * 0.0254).toFixed(3)
+  widthM.value  = (widthIn.value * 0.0254).toFixed(3)
+}
+
 function calculate(){
-  const l=num("lengthMeter"), w=num("widthMeter"), g=num("gsm");
-  const p=num("purchaseKg"), s=num("salesKg");
+  let l = parseFloat(lengthM.value)||0
+  let w = parseFloat(widthM.value)||0
+  let gsmVal = parseFloat(gsm.value)||0
+  let pKg = parseFloat(purchasePrice.value)||0
+  let sKg = parseFloat(salesPrice.value)||0
 
-  const wt=l*w*g;
-  const purchaseTaxVal=wt*p, purchaseGstVal=purchaseTaxVal*0.18;
-  const salesTaxVal=wt*s, salesGstVal=salesTaxVal*0.18;
+  // ✔ CORRECT SHEET WEIGHT FORMULA
+  let sheetWeight = l * w * gsmVal
 
-  weight.innerText=wt.toFixed(4);
-  pTax.innerText=purchaseTaxVal.toFixed(4);
-  pGst.innerText=purchaseGstVal.toFixed(4);
-  pFinal.innerText=(purchaseTaxVal+purchaseGstVal).toFixed(4);
-  sTax.innerText=salesTaxVal.toFixed(4);
-  sGst.innerText=salesGstVal.toFixed(4);
-  sFinal.innerText=(salesTaxVal+salesGstVal).toFixed(4);
+  // ✔ CORRECT TAXABLE FORMULA
+  let purchaseTax = l * w * gsmVal * pKg
+  let salesTax = l * w * gsmVal * sKg
+
+  let purchaseGst = purchaseTax * 0.18
+  let salesGst = salesTax * 0.18
+
+  document.getElementById("weight").innerText = sheetWeight.toFixed(3)
+
+  document.getElementById("pTax").innerText = purchaseTax.toFixed(3)
+  document.getElementById("pGst").innerText = purchaseGst.toFixed(3)
+  document.getElementById("pFinal").innerText = (purchaseTax + purchaseGst).toFixed(3)
+
+  document.getElementById("sTax").innerText = salesTax.toFixed(3)
+  document.getElementById("sGst").innerText = salesGst.toFixed(3)
+  document.getElementById("sFinal").innerText = (salesTax + salesGst).toFixed(3)
+
+  document.getElementById("profit").innerText =
+    (salesTax - purchaseTax).toFixed(3)
 }
+
+// ADVANCED KEYBOARD NAVIGATION
+const inputs = Array.from(document.querySelectorAll("input"));
+
+inputs.forEach((input, index) => {
+
+  // Auto select text on focus
+  input.addEventListener("focus", function () {
+    setTimeout(() => this.select(), 10);
+  });
+
+  // Enter / Shift+Enter navigation
+  input.addEventListener("keydown", function (e) {
+
+    if (e.key === "Enter") {
+      e.preventDefault();
+
+      // SHIFT + ENTER → Previous
+      if (e.shiftKey) {
+        if (index > 0) {
+          inputs[index - 1].focus();
+        }
+      } 
+      // ENTER → Next OR Calculate
+      else {
+        if (index < inputs.length - 1) {
+          inputs[index + 1].focus();
+        } else {
+          calculate(); // last input
+        }
+      }
+    }
+  });
+});
+
+
 </script>
 
 </body>
 </html>
-
-
