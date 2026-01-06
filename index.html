@@ -8,8 +8,18 @@
 <style>
 *{box-sizing:border-box;font-family:Arial,sans-serif}
 body{background:#eef2f5;margin:0;padding:12px}
-.container{max-width:420px;margin:auto;background:#fff;padding:16px;border-radius:12px;box-shadow:0 6px 18px rgba(0,0,0,.08)}
+
+.container{
+  max-width:420px;
+  margin:auto;
+  background:#fff;
+  padding:16px;
+  border-radius:12px;
+  box-shadow:0 6px 18px rgba(0,0,0,.08)
+}
+
 h2{text-align:center;margin-bottom:16px}
+
 .section{margin-bottom:14px}
 .section-title{font-weight:bold;margin-bottom:6px}
 
@@ -22,7 +32,13 @@ input{
   padding:10px;
   border-radius:6px;
   border:1px solid #ccc;
-  font-size:15px;
+  font-size:15px
+}
+
+input:focus{
+  border-color:#27b6ff;
+  box-shadow:0 0 6px rgba(39,182,255,.6);
+  outline:none
 }
 
 button{
@@ -33,56 +49,59 @@ button{
   color:#fff;
   font-size:16px;
   border-radius:8px;
-  cursor:pointer;
+  cursor:pointer
 }
 
 table{
   width:100%;
   border-collapse:collapse;
-  margin-top:10px;
+  margin-top:10px
 }
 
 th,td{
   border:1px solid #000;
   padding:8px;
   text-align:center;
-  font-size:15px;
+  font-size:15px
 }
 
-.purchase{color:#d35400;font-weight:bold}
-.sales{color:#1e8449;font-weight:bold}
+.purchase{color:#d35400;font-weight:bold;font-size: 1.4rem;}
+.sales{color:#1e8449;font-weight:bold;font-size: 1.4rem;}
+  
 
 .summary{
   display:flex;
   gap:10px;
-  margin-top:12px;
+  margin-top:12px
 }
 
+.summary.three .box{width:33.33%}
+
 .box{
-  width:50%;
   background:#f2f7ff;
-  padding:12px;
+  padding:10px;
   text-align:center;
   border-radius:8px;
-  font-weight:bold;
+  font-size:15px;
+  font-weight:Normal
 }
 
 .box span{
   display:block;
   margin-top:6px;
-  font-size:16px;
+  font-size:22px;
+  font-weight:Bold
 }
 
 .profit{
   background:#eafaf1;
-  color:#1e8449;
+  color:#1e8449
 }
 
-/* Active input highlight */
-input:focus {
-  border-color: #27b6ff;
-  box-shadow: 0 0 6px rgba(39,182,255,0.6);
-  outline: none;
+.sales-highlight {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: #0a7c2f;
 }
 
 </style>
@@ -97,8 +116,8 @@ input:focus {
 <div class="section">
   <div class="section-title">Centimeter (CM)</div>
   <div class="row two">
-    <input id="lengthCm" placeholder="Length (CM)" oninput="cmToMeter()">
-    <input id="widthCm" placeholder="Width (CM)" oninput="cmToMeter()">
+    <input id="lengthCm" type="number" inputmode="decimal" step="any" pattern="[0-9]*" placeholder="Length (CM)" oninput="cmToMeter()">
+    <input id="widthCm" type="number" inputmode="decimal" step="any" pattern="[0-9]*"placeholder="Width (CM)" oninput="cmToMeter()">
   </div>
 </div>
 
@@ -106,8 +125,8 @@ input:focus {
 <div class="section">
   <div class="section-title">Inch</div>
   <div class="row two">
-    <input id="lengthIn" placeholder="Length (Inch)" oninput="inchToMeter()">
-    <input id="widthIn" placeholder="Width (Inch)" oninput="inchToMeter()">
+    <input id="lengthIn" type="number" inputmode="decimal" step="any" pattern="[0-9]*"placeholder="Length (Inch)" oninput="inchToMeter()">
+    <input id="widthIn" type="number" inputmode="decimal" step="any" pattern="[0-9]*"placeholder="Width (Inch)" oninput="inchToMeter()">
   </div>
 </div>
 
@@ -115,18 +134,18 @@ input:focus {
 <div class="section">
   <div class="section-title">Meter (Primary)</div>
   <div class="row two">
-    <input id="lengthM" placeholder="Length (Meter)">
-    <input id="widthM" placeholder="Width (Meter)">
+    <input id="lengthM" type="number" inputmode="decimal" step="any" pattern="[0-9]*" placeholder="Length (Meter)">
+    <input id="widthM" type="number" inputmode="decimal" step="any" pattern="[0-9]*" placeholder="Width (Meter)">
   </div>
 </div>
 
-<!-- MATERIAL & PRICE -->
+<!-- MATERIAL -->
 <div class="section">
   <div class="section-title">Material & Price</div>
   <div class="row three">
-    <input id="gsm" placeholder="GSM">
-    <input id="purchasePrice" placeholder="Purchase ₹ / KG">
-    <input id="salesPrice" placeholder="Sales ₹ / KG">
+    <input id="gsm" type="number" inputmode="decimal" step="any" pattern="[0-9]*" placeholder="GSM">
+    <input id="purchasePrice" type="number" inputmode="decimal" step="any" pattern="[0-9]*" placeholder="Purchase ₹ / KG">
+    <input id="salesPrice" type="number" inputmode="decimal" step="any" pattern="[0-9]*" placeholder="Sales ₹ / KG">
   </div>
 </div>
 
@@ -156,14 +175,18 @@ input:focus {
 </tr>
 </table>
 
-<!-- WEIGHT & PROFIT -->
-<div class="summary">
+<!-- SUMMARY -->
+<div class="summary three">
   <div class="box">
-    Sheet Weight<br>
+    Sheet Weight
     <span id="weight">0.000</span>
   </div>
+  <div class="box">
+    MOQ
+    <span id="moq">0.000</span>
+  </div>
   <div class="box profit">
-    Profit ₹<br>
+    Profit ₹
     <span id="profit">0.000</span>
   </div>
 </div>
@@ -172,81 +195,60 @@ input:focus {
 
 <script>
 function cmToMeter(){
-  lengthM.value = (lengthCm.value / 100).toFixed(3)
-  widthM.value  = (widthCm.value / 100).toFixed(3)
+  lengthM.value=(lengthCm.value/100||0).toFixed(3)
+  widthM.value=(widthCm.value/100||0).toFixed(3)
 }
 
 function inchToMeter(){
-  lengthM.value = (lengthIn.value * 0.0254).toFixed(3)
-  widthM.value  = (widthIn.value * 0.0254).toFixed(3)
+  lengthM.value=(lengthIn.value*0.0254||0).toFixed(3)
+  widthM.value=(widthIn.value*0.0254||0).toFixed(3)
 }
 
 function calculate(){
-  let l = parseFloat(lengthM.value)||0
-  let w = parseFloat(widthM.value)||0
-  let gsmVal = parseFloat(gsm.value)||0
-  let pKg = parseFloat(purchasePrice.value)||0
-  let sKg = parseFloat(salesPrice.value)||0
+  let l=+lengthM.value||0
+  let w=+widthM.value||0
+  let gsmVal=+gsm.value||0
+  let pKg=+purchasePrice.value||0
+  let sKg=+salesPrice.value||0
 
-  // ✔ CORRECT SHEET WEIGHT FORMULA
-  let sheetWeight = l * w * gsmVal
+  let sheetWeight=l*w*gsmVal
+  let moqVal=sheetWeight>0?1000/sheetWeight:0
 
-  // ✔ CORRECT TAXABLE FORMULA
-  let purchaseTax = l * w * gsmVal * pKg
-  let salesTax = l * w * gsmVal * sKg
+  let pTax=l*w*gsmVal*pKg
+  let sTax=l*w*gsmVal*sKg
 
-  let purchaseGst = purchaseTax * 0.18
-  let salesGst = salesTax * 0.18
+  let pGst=pTax*0.18
+  let sGst=sTax*0.18
 
-  document.getElementById("weight").innerText = sheetWeight.toFixed(3)
+  weight.innerText=sheetWeight.toFixed(3)
+  moq.innerText=moqVal.toFixed(3)
 
-  document.getElementById("pTax").innerText = purchaseTax.toFixed(3)
-  document.getElementById("pGst").innerText = purchaseGst.toFixed(3)
-  document.getElementById("pFinal").innerText = (purchaseTax + purchaseGst).toFixed(3)
+  pTaxEl.innerText=pTax.toFixed(3)
+  pGstEl.innerText=pGst.toFixed(3)
+  pFinal.innerText=(pTax+pGst).toFixed(3)
 
-  document.getElementById("sTax").innerText = salesTax.toFixed(3)
-  document.getElementById("sGst").innerText = salesGst.toFixed(3)
-  document.getElementById("sFinal").innerText = (salesTax + salesGst).toFixed(3)
+  sTaxEl.innerText=sTax.toFixed(3)
+  sGstEl.innerText=sGst.toFixed(3)
+  sFinal.innerText=(sTax+sGst).toFixed(3)
 
-  document.getElementById("profit").innerText =
-    (salesTax - purchaseTax).toFixed(3)
+  profit.innerText=(sTax-pTax).toFixed(3)
 }
 
-// ADVANCED KEYBOARD NAVIGATION
-const inputs = Array.from(document.querySelectorAll("input"));
+const pTaxEl=pTax, pGstEl=pGst, sTaxEl=sTax, sGstEl=sGst
 
-inputs.forEach((input, index) => {
-
-  // Auto select text on focus
-  input.addEventListener("focus", function () {
-    setTimeout(() => this.select(), 10);
-  });
-
-  // Enter / Shift+Enter navigation
-  input.addEventListener("keydown", function (e) {
-
-    if (e.key === "Enter") {
-      e.preventDefault();
-
-      // SHIFT + ENTER → Previous
-      if (e.shiftKey) {
-        if (index > 0) {
-          inputs[index - 1].focus();
-        }
-      } 
-      // ENTER → Next OR Calculate
-      else {
-        if (index < inputs.length - 1) {
-          inputs[index + 1].focus();
-        } else {
-          calculate(); // last input
-        }
-      }
+// Keyboard UX
+const inputs=[...document.querySelectorAll("input")]
+inputs.forEach((inp,i)=>{
+  inp.addEventListener("focus",()=>setTimeout(()=>inp.select(),10))
+  inp.addEventListener("keydown",e=>{
+    if(e.key==="Enter"){
+      e.preventDefault()
+      if(e.shiftKey && i>0) inputs[i-1].focus()
+      else if(i<inputs.length-1) inputs[i+1].focus()
+      else calculate()
     }
-  });
-});
-
-
+  })
+})
 </script>
 
 </body>
